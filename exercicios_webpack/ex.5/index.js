@@ -1,5 +1,4 @@
-import './estilo.css';
-import 'react';
+import 'react'
 
 export default props => (
     <h1>Hello</h1>

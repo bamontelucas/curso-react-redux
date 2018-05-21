@@ -71,14 +71,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./ex/duvidaCruel.js":
-/*!***************************!*\
-  !*** ./ex/duvidaCruel.js ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./ex/Pessoa.js":
+/*!**********************!*\
+  !*** ./ex/Pessoa.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("console.log('am i loaded?');\n\n//# sourceURL=webpack:///./ex/duvidaCruel.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Pessoa; });\nclass Pessoa {\r\n    constructor(nome) {\r\n        this.nome = nome;\r\n    }\r\n\r\n    toString() {\r\n        return `Pessoa: ${this.nome}`\r\n    }\r\n}\n\n//# sourceURL=webpack:///./ex/Pessoa.js?");
 
 /***/ }),
 
@@ -86,10 +87,11 @@ eval("console.log('am i loaded?');\n\n//# sourceURL=webpack:///./ex/duvidaCruel.
 /*!*********************!*\
   !*** ./ex/index.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./duvidaCruel */ \"./ex/duvidaCruel.js\");\n\n//# sourceURL=webpack:///./ex/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Pessoa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pessoa */ \"./ex/Pessoa.js\");\n\r\n\r\nconst pessoa = new _Pessoa__WEBPACK_IMPORTED_MODULE_0__[\"default\"]('Lucas Corrêa');\r\nconsole.log(pessoa+'');\n\n//# sourceURL=webpack:///./ex/index.js?");
 
 /***/ })
 
