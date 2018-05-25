@@ -1,7 +1,7 @@
 const Todo = require('./todo');
 
 Todo.methods(['get', 'post', 'put', 'delete']);
-Todo.updateOptons({
+Todo.updateOptions({
     new: true,
     runValidators: true
 });
