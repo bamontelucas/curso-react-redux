@@ -1,12 +1,14 @@
 import 'modules/bootstrap/dist/css/bootstrap.min.css';
 import 'modules/font-awesome/css/font-awesome.min.css';
 import React from 'react';
-import Todo from '../Todo/Todo';
-import About from '../About/About';
+import Menu from '../Template/Menu'
+import Routes from './Routes';
 
 export default props => (
-    <div className="container">
-        <Todo></Todo>
-        <About></About>
-    </div>
+    <React.Fragment>
+        <Menu></Menu>
+        <div className="container">        
+            <Routes></Routes>
+        </div>
+    </React.Fragment>    
 )
