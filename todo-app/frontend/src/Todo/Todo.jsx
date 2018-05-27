@@ -18,26 +18,47 @@ export default class Todo extends React.Component {
         this.refresh();
     }
 
-    refresh = async () => {
-        const resp = await axios.get(`${URL}?sort=-createdAt`);
-        this.setState({
-            description: '',
-            list: resp.data
-        });
+    refresh = async (description = this.state.description) => {
+        const search = description ? `&description__regex=/${description}/` : '';
+        const resp = await axios.get(`${URL}?sort=-createdAt${search}`);
+        const list = resp.data;
+
+        this.setState({description, list});
+    }
+
+    handleSearch = async () => {
+        this.refresh();
+    }
+
+    handleClear = async () => {
+        this.refresh('');
     }
 
     handleAdd = async () => {
         const { description } = this.state;
         const response = await axios.post(URL, { description });
-        this.refresh();
+        this.refresh('');
     }
 
-    handleChange = (e) => this.setState({ description: e.target.value });
+    handleChange = (e) => {
+        this.setState({ description: e.target.value });
+    }
 
     handleRemove = async (task) => {
         await axios.delete(`${URL}/${task._id}`);
         this.refresh();
     }
+
+    handleDone = async (task) => {
+        await axios.put(`${URL}/${task._id}`, {done: true});
+        this.refresh();
+    }
+
+    handleUndo = async (task) => {
+        await axios.put(`${URL}/${task._id}`, {done: false});
+        this.refresh();
+    }
+
 
     render() {
         return (
@@ -47,10 +68,14 @@ export default class Todo extends React.Component {
                     description={this.state.description}
                     handleChange={this.handleChange}
                     handleAdd={this.handleAdd}
+                    handleSearch={this.handleSearch}
+                    handleClear={this.handleClear}
                 />
                 <TodoList
                     list={this.state.list}
                     handleRemove={this.handleRemove}
+                    handleDone={this.handleDone}
+                    handleUndo={this.handleUndo}
                 />
             </React.Fragment>
         );
