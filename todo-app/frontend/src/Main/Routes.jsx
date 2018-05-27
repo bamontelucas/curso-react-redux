@@ -1,15 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Route, Redirect, hashHistory} from 'react-router-dom';
+import {HashRouter, Route, Redirect, Switch} from 'react-router-dom';
 import Todo from '../Todo/Todo';
 import About from '../About/About';
 
-export default props => (
-    <BrowserRouter history={hashHistory}>
-        <React.Fragment>
-            <Route path='#/todos' component={Todo}></Route>
-            <Route path='#/about' component={About}></Route>
-            <Redirect from='*' to='#/todos'></Redirect>
-        </React.Fragment>
-    </BrowserRouter>
+const Routes = props => (
+    <HashRouter>
+        <Switch>
+            <Route path='/todos' component={Todo}></Route>
+            <Route path='/about' component={About}></Route>
+            <Redirect from='*' to='/todos'></Redirect>
+        </Switch>
+    </HashRouter>
 )
 
+export default Routes;

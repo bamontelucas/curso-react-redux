@@ -4,11 +4,13 @@ import React from 'react';
 import Menu from '../Template/Menu'
 import Routes from './Routes';
 
-export default props => (
+const App = props => (
     <React.Fragment>
         <Menu></Menu>
-        <div className="container">        
+        <div className="container-fluid">        
             <Routes></Routes>
         </div>
     </React.Fragment>    
-)
+);
+
+export default App;
