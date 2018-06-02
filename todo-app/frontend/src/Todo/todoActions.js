@@ -7,23 +7,29 @@ export const changeDescription = e => ({
     payload: e.target.value
 });
 
-export const search = description => {
-    const search = description ? `&description__regex=/${description}/` : '';
-    const request = axios.get(`${URL}?sort=-createdAt${search}`);
-    
-    return {
-        type: 'TODO_SEARCHED',
-        payload: request
+export const clear = () => (
+    async (dispatch) => {
+        await dispatch({ type: 'TODO_CLEAR' });
+        dispatch(search());
     }
-}
+)
+
+export const search = () => (
+    async (dispatch, getState) => {
+        const { description } = getState().todo;
+        const search = description ? `&description__regex=/${description}/` : '';
+        const resp = await axios.get(`${URL}?sort=-createdAt${search}`);
+        dispatch ({
+            type: 'TODO_SEARCHED',
+            payload: resp.data
+        })
+    }
+)
 
 export const add = description => (
     async (dispatch) => {
         const resp = await axios.post(URL, { description });
-        await dispatch({
-            type: 'TODO_ADDED',
-            payload: resp.data
-        });
+        await dispatch({ type: 'TODO_CLEAR' });
         dispatch(search());
     }
 )
