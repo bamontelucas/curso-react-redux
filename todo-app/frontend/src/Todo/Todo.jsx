@@ -65,18 +65,11 @@ export default class Todo extends React.Component {
             <React.Fragment>
                 <PageHeader name="Tarefas" small="Cadastro">Todo</PageHeader>
                 <TodoForm
-                    description={this.state.description}
                     handleChange={this.handleChange}
-                    handleAdd={this.handleAdd}
                     handleSearch={this.handleSearch}
                     handleClear={this.handleClear}
                 />
-                <TodoList
-                    list={this.state.list}
-                    handleRemove={this.handleRemove}
-                    handleDone={this.handleDone}
-                    handleUndo={this.handleUndo}
-                />
+                <TodoList />
             </React.Fragment>
         );
     }
