@@ -2,16 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import counterReducer from './counterReducer';
-import Counter from './Counter';
+import Field from './Field';
+import fieldReducer from './fieldReducer'
 
 const reducers = combineReducers({
-    counter: counterReducer
+    field: fieldReducer
 })
 
 render(
     <Provider store={createStore(reducers)}>
-        <Counter />
+        <Field initialValue="xpto" />
     </Provider>,
     document.getElementById('app')
 );

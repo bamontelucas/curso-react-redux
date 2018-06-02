@@ -1,0 +1,14 @@
+.btn+.btn {
+    margin-left: .5em;
+}
+.done {
+    text-decoration: line-through;
+    color: #777;
+}
+.todoForm {
+    padding-bottom: 2em;
+}
+.actionColumn {
+    white-space: nowrap;
+    width: 1px;
+}
